@@ -26,21 +26,20 @@ const LAYOUT = {
   plaque: { x: 1376, y: 1500, width: 520, height: 50 },
   forcePng: { desk_v2: true },
 
-  // avatar 图片大小 1024x1024，在 2752x1536 画布上 scale 0.15 = ~154px 显示
-  // spiderman 是 1408x768，scale 0.12 = ~169px
+  // 32×32 sprite × scale 4.0 = 128px 显示尺寸，和原版 guest_anim 一致
   agentDesks: [
     // Row 1
-    { agentId: 'spiderman',  x: 504,  y: 520,  sprite: 'avatar_spiderman',  scale: 0.15, depth: 910 },
-    { agentId: 'jarvis',     x: 994,  y: 490,  sprite: 'avatar_jarvis',     scale: 0.18, depth: 910 },
-    { agentId: 'ironman',    x: 1573, y: 520,  sprite: 'avatar_ironman',    scale: 0.18, depth: 910 },
+    { agentId: 'spiderman',  x: 504,  y: 520,  sprite: 'sprite_spiderman',  scale: 4.0, depth: 910 },
+    { agentId: 'jarvis',     x: 994,  y: 490,  sprite: 'sprite_jarvis',     scale: 4.0, depth: 910 },
+    { agentId: 'ironman',    x: 1573, y: 520,  sprite: 'sprite_ironman',    scale: 4.0, depth: 910 },
     // Row 2
-    { agentId: 'blackwidow', x: 504,  y: 950,  sprite: 'avatar_blackwidow', scale: 0.18, depth: 910 },
-    { agentId: 'hawkeye',    x: 1007, y: 950,  sprite: 'avatar_hawkeye',    scale: 0.18, depth: 910 },
-    { agentId: 'thor',       x: 1587, y: 900,  sprite: 'avatar_thor',       scale: 0.18, depth: 910 },
+    { agentId: 'blackwidow', x: 504,  y: 950,  sprite: 'sprite_blackwidow', scale: 4.0, depth: 910 },
+    { agentId: 'hawkeye',    x: 1007, y: 950,  sprite: 'sprite_hawkeye',    scale: 4.0, depth: 910 },
+    { agentId: 'thor',       x: 1587, y: 900,  sprite: 'sprite_thor',       scale: 4.0, depth: 910 },
     // Row 3
-    { agentId: 'hulk',       x: 511,  y: 1380, sprite: 'avatar_hulk',       scale: 0.18, depth: 910 },
-    { agentId: 'captain',    x: 994,  y: 1380, sprite: 'avatar_captain',    scale: 0.18, depth: 910 },
-    { agentId: 'norva',      x: 1573, y: 1380, sprite: 'avatar_norva',      scale: 0.18, depth: 910 }
+    { agentId: 'hulk',       x: 511,  y: 1380, sprite: 'sprite_hulk',       scale: 4.0, depth: 910 },
+    { agentId: 'captain',    x: 994,  y: 1380, sprite: 'sprite_captain',    scale: 4.0, depth: 910 },
+    { agentId: 'norva',      x: 1573, y: 1380, sprite: 'sprite_norva',      scale: 4.0, depth: 910 }
   ],
 
   totalAssets: 24
