@@ -1377,7 +1377,7 @@
 
             // cache-busting to avoid stale background on client/CDN
             // use smaller/new map version provided by user
-            this.load.image('office_bg', './office_bg_small' + (supportsWebP ? '.webp' : '.png') + '?v=20260302');
+            this.load.image('office_bg', './office_bg' + (supportsWebP ? '.webp' : '.png') + '?v=20260302v4');
             this.load.spritesheet('star_idle', './star-idle-spritesheet' + getExt('star-idle-spritesheet.png'), { frameWidth: 128, frameHeight: 128 });
             this.load.spritesheet('star_researching', './star-researching-spritesheet' + getExt('star-researching-spritesheet.png'), { frameWidth: 128, frameHeight: 105 });
 
@@ -1415,21 +1415,21 @@
             this.load.spritesheet('flowers', './flowers-spritesheet' + (supportsWebP ? '.webp' : '.png'), { frameWidth: 65, frameHeight: 65 });
 
             // Guest/Demo agent sprites
-            this.load.image('guestagent1', './guestagent1.webp?v=20260302');
-            this.load.image('guestagent2', './guestagent2.webp?v=20260302');
-            this.load.spritesheet('guest_anim_1', './guest_anim_1.webp?v=20260302', { frameWidth: 32, frameHeight: 32 });
-            this.load.spritesheet('guest_anim_2', './guest_anim_2.webp?v=20260302', { frameWidth: 32, frameHeight: 32 });
-            this.load.spritesheet('guest_anim_3', './guest_anim_3.webp?v=20260302', { frameWidth: 32, frameHeight: 32 });
-            this.load.spritesheet('guest_anim_4', './guest_anim_4.webp?v=20260302', { frameWidth: 32, frameHeight: 32 });
-            this.load.spritesheet('guest_anim_5', './guest_anim_5.webp?v=20260302', { frameWidth: 32, frameHeight: 32 });
-            this.load.spritesheet('guest_anim_6', './guest_anim_6.webp?v=20260302', { frameWidth: 32, frameHeight: 32 });
-            this.load.image('demo_nika', './demo_nika.webp?v=20260302');
-            this.load.image('demo_mercury', './demo_mercury.webp?v=20260302');
+            this.load.image('guestagent1', './guestagent1.webp?v=20260302v4');
+            this.load.image('guestagent2', './guestagent2.webp?v=20260302v4');
+            this.load.spritesheet('guest_anim_1', './guest_anim_1.webp?v=20260302v4', { frameWidth: 32, frameHeight: 32 });
+            this.load.spritesheet('guest_anim_2', './guest_anim_2.webp?v=20260302v4', { frameWidth: 32, frameHeight: 32 });
+            this.load.spritesheet('guest_anim_3', './guest_anim_3.webp?v=20260302v4', { frameWidth: 32, frameHeight: 32 });
+            this.load.spritesheet('guest_anim_4', './guest_anim_4.webp?v=20260302v4', { frameWidth: 32, frameHeight: 32 });
+            this.load.spritesheet('guest_anim_5', './guest_anim_5.webp?v=20260302v4', { frameWidth: 32, frameHeight: 32 });
+            this.load.spritesheet('guest_anim_6', './guest_anim_6.webp?v=20260302v4', { frameWidth: 32, frameHeight: 32 });
+            this.load.image('demo_nika', './demo_nika.webp?v=20260302v4');
+            this.load.image('demo_mercury', './demo_mercury.webp?v=20260302v4');
         }
 
         function create() {
             game = this;
-            this.add.image(640, 360, 'office_bg');
+            this.add.image(1376, 768, 'office_bg');
 
             // Place furniture: Sofa
             // NOTE: coordinates are interpreted as the TOP-LEFT corner of the sprite
