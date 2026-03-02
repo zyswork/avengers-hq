@@ -498,11 +498,25 @@
         let loadedAssets = 0;
         let loadingProgressBar, loadingProgressContainer, loadingOverlay, loadingText;
 
-        // Avengers 8 Agents 渲染函数
-        function initAvengersAgents() {
+        // Avengers 9 Agents 渲染函数
+        // agentsData: 可选的 agents-state.json 数据，用于显示正确的名字和 emoji
+        function initAvengersAgents(agentsData) {
             if (!game || !LAYOUT.agentDesks) return;
 
+            // 构建 agentId -> 状态数据的映射
+            const agentsMap = {};
+            if (Array.isArray(agentsData)) {
+                agentsData.forEach(a => { agentsMap[a.agentId] = a; });
+            }
+
             LAYOUT.agentDesks.forEach(agent => {
+                // 获取 agent 状态数据
+                const agentData = agentsMap[agent.agentId] || {};
+                const agentName = agentData.name || agent.agentId;
+                const agentEmoji = agentData.emoji || '';
+                const agentState = agentData.state || 'idle';
+                const agentDetail = agentData.detail || '';
+
                 // 为每个 agent 创建 sprite
                 const spriteKey = agent.sprite;
                 let sprite;
@@ -530,20 +544,22 @@
                     sprite.setDepth(agent.depth || 900);
                 }
 
-                // 名字标签
-                const nameText = game.add.text(agent.x, agent.y - 90, agent.agentId, {
+                // 名字标签 (带 emoji, 22px)
+                const displayName = agentEmoji + ' ' + agentName;
+                const nameText = game.add.text(agent.x, agent.y - 100, displayName, {
                     fontFamily: 'ArkPixel, monospace',
-                    fontSize: '14px',
+                    fontSize: '22px',
                     fill: '#ffffff',
                     stroke: '#000',
-                    strokeThickness: 2
+                    strokeThickness: 3,
+                    backgroundColor: 'rgba(0,0,0,0.5)'
                 }).setOrigin(0.5);
                 nameText.setDepth(2601);
 
                 // 状态详情标签
-                const detailText = game.add.text(agent.x, agent.y - 75, '', {
+                const detailText = game.add.text(agent.x, agent.y - 75, agentDetail, {
                     fontFamily: 'ArkPixel, monospace',
-                    fontSize: '12px',
+                    fontSize: '14px',
                     fill: '#ffff00'
                 }).setOrigin(0.5);
                 detailText.setDepth(2601);
@@ -552,7 +568,7 @@
                     sprite,
                     nameText,
                     detailText,
-                    state: 'idle',
+                    state: agentState,
                     deskConfig: agent
                 };
             });
@@ -1851,8 +1867,15 @@
             fetchStatus();
             fetchGuestAgents();
 
-            // 初始化 Avengers 8 agents
-            initAvengersAgents();
+            // 先获取 agents-state.json，再初始化 Avengers agents
+            fetch('./agents-state.json?t=' + Date.now(), { cache: 'no-store' })
+                .then(resp => resp.json())
+                .then(agentsData => {
+                    initAvengersAgents(agentsData);
+                })
+                .catch(() => {
+                    initAvengersAgents(null); // 失败时使用默认
+                });
         }
 
         function update(time) {
