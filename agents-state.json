@@ -1,0 +1,10 @@
+[
+  {"agentId":"jarvis","name":"Jarvis","emoji":"🤖","state":"idle","detail":"管家待命"},
+  {"agentId":"ironman","name":"IronMan","emoji":"🛠","state":"writing","detail":"写代码"},
+  {"agentId":"blackwidow","name":"BlackWidow","emoji":"🕷","state":"executing","detail":"执行任务"},
+  {"agentId":"hawkeye","name":"HawkEye","emoji":"🏹","state":"researching","detail":"搜索情报"},
+  {"agentId":"thor","name":"Thor","emoji":"⚡","state":"idle","detail":"休息中"},
+  {"agentId":"hulk","name":"Hulk","emoji":"💚","state":"writing","detail":"数据分析"},
+  {"agentId":"captain","name":"Captain","emoji":"🛡","state":"idle","detail":"待命"},
+  {"agentId":"norva","name":"Norva","emoji":"🎀","state":"writing","detail":"写文案"}
+]
