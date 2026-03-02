@@ -28,19 +28,19 @@
         #bottom-panels {
             display: flex;
             gap: 20px;
-            width: 1280px;
+            width: 2752px;
             max-width: 95vw;
         }
         #game-container {
             border: 4px solid #e94560;
             image-rendering: pixelated;
-            width: 1280px;
-            height: 720px;
-            max-width: 95vw;
-            /* 手机上用“可见高度”限制，避免被底部面板挤压导致裁切 */
-            max-height: 70vh;
-            /* 关键：强制容器保持 16:9，避免 canvas 在不同布局下被拉伸变形 */
-            aspect-ratio: 16 / 9;
+            width: 100vw;
+            max-width: 2752px;
+            height: auto;
+            /* 关键：保持 16:9 (2752:1536) */
+            aspect-ratio: 2752 / 1536;
+            /* 大屏可以滚动 */
+            overflow: auto;
         }
         #game-container canvas {
             width: 100% !important;

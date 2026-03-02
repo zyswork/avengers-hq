@@ -9,49 +9,49 @@
 const LAYOUT = {
   // === 游戏画布 ===
   game: {
-    width: 1280,
-    height: 720
+    width: 2752,
+    height: 1536
   },
 
   // === 各区域坐标 ===
   areas: {
-    door:        { x: 640, y: 550 },
-    writing:     { x: 320, y: 360 },
-    researching: { x: 320, y: 360 },
-    error:       { x: 1066, y: 180 },
-    breakroom:   { x: 640, y: 360 }
+    door:        { x: 1376, y: 1200 },
+    writing:     { x: 700, y: 800 },
+    researching: { x: 700, y: 800 },
+    error:       { x: 2200, y: 400 },
+    breakroom:   { x: 1376, y: 800 }
   },
 
   // === 装饰与家具：坐标 + 原点 + depth ===
   furniture: {
     // 沙发
     sofa: {
-      x: 670,
-      y: 144,
+      x: 1400,
+      y: 320,
       origin: { x: 0, y: 0 },
       depth: 10
     },
 
     // 新办公桌（透明 PNG 强制）
     desk: {
-      x: 218,
-      y: 417,
+      x: 460,
+      y: 900,
       origin: { x: 0.5, y: 0.5 },
       depth: 1000
     },
 
     // 桌上花盆
     flower: {
-      x: 310,
-      y: 405,
+      x: 650,
+      y: 870,
       origin: { x: 0.5, y: 0.5 },
       depth: 1100
     },
 
     // Star 在桌前工作（在 desk 下面）
     starWorking: {
-      x: 217,
-      y: 333,
+      x: 460,
+      y: 720,
       origin: { x: 0.5, y: 0.5 },
       depth: 900,
       scale: 1.32
@@ -59,56 +59,56 @@ const LAYOUT = {
 
     // 植物们
     plants: [
-      { x: 565, y: 178, depth: 5 },
-      { x: 230, y: 185, depth: 5 },
-      { x: 977, y: 496, depth: 5 }
+      { x: 1180, y: 380, depth: 5 },
+      { x: 480, y: 400, depth: 5 },
+      { x: 2040, y: 1080, depth: 5 }
     ],
 
     // 海报
     poster: {
-      x: 252,
-      y: 66,
+      x: 520,
+      y: 140,
       depth: 4
     },
 
     // 咖啡机
     coffeeMachine: {
-      x: 659,
-      y: 397,
+      x: 1380,
+      y: 860,
       origin: { x: 0.5, y: 0.5 },
       depth: 99
     },
 
     // 服务器区
     serverroom: {
-      x: 1021,
-      y: 142,
+      x: 2200,
+      y: 300,
       origin: { x: 0.5, y: 0.5 },
       depth: 2
     },
 
     // 错误 bug
     errorBug: {
-      x: 1007,
-      y: 221,
+      x: 2180,
+      y: 480,
       origin: { x: 0.5, y: 0.5 },
       depth: 50,
       scale: 0.9,
-      pingPong: { leftX: 1007, rightX: 1111, speed: 0.6 }
+      pingPong: { leftX: 2180, rightX: 2350, speed: 0.6 }
     },
 
     // 同步动画
     syncAnim: {
-      x: 1157,
-      y: 592,
+      x: 2480,
+      y: 1280,
       origin: { x: 0.5, y: 0.5 },
       depth: 40
     },
 
     // 小猫
     cat: {
-      x: 94,
-      y: 557,
+      x: 200,
+      y: 1200,
       origin: { x: 0.5, y: 0.5 },
       depth: 2000
     }
@@ -116,10 +116,10 @@ const LAYOUT = {
 
   // === 牌匾 ===
   plaque: {
-    x: 640,
-    y: 720 - 36,
-    width: 420,
-    height: 44
+    x: 1376,
+    y: 1536 - 80,
+    width: 600,
+    height: 60
   },
 
   // === 资源加载规则：哪些强制用 PNG（透明资源） ===
@@ -127,16 +127,21 @@ const LAYOUT = {
     desk_v2: true // 新办公桌必须透明，强制 PNG
   },
 
-  // === 8 个 Agent 工位配置 ===
+  // === 9 个 Agent 工位配置 ===
+  // 3排布局：
+  // Row 1 (y≈350): spiderman, jarvis, ironman, 休息区
+  // Row 2 (y≈750): blackwidow, hawkeye, thor, 图书角
+  // Row 3 (y≈1150): hulk, captain, norva, 服务器房
   agentDesks: [
-    { agentId: 'jarvis', x: 200, y: 350, sprite: 'guest_anim_1', scale: 1.2, depth: 900 },
-    { agentId: 'ironman', x: 320, y: 400, sprite: 'guest_anim_2', scale: 1.2, depth: 900 },
-    { agentId: 'blackwidow', x: 480, y: 280, sprite: 'guest_anim_3', scale: 1.2, depth: 900 },
-    { agentId: 'hawkeye', x: 520, y: 450, sprite: 'guest_anim_4', scale: 1.2, depth: 900 },
-    { agentId: 'thor', x: 680, y: 380, sprite: 'guest_anim_5', scale: 1.2, depth: 900 },
-    { agentId: 'hulk', x: 880, y: 200, sprite: 'guest_anim_6', scale: 1.2, depth: 900 },
-    { agentId: 'captain', x: 1000, y: 280, sprite: 'star_idle', scale: 1.3, depth: 900 },
-    { agentId: 'norva', x: 1150, y: 400, sprite: 'star_researching', scale: 1.3, depth: 900 }
+    { agentId: 'spiderman', x: 350, y: 350, sprite: 'guest_anim_1', scale: 1.2, depth: 900 },
+    { agentId: 'jarvis', x: 850, y: 350, sprite: 'guest_anim_2', scale: 1.2, depth: 900 },
+    { agentId: 'ironman', x: 1350, y: 350, sprite: 'guest_anim_3', scale: 1.2, depth: 900 },
+    { agentId: 'blackwidow', x: 350, y: 750, sprite: 'guest_anim_4', scale: 1.2, depth: 900 },
+    { agentId: 'hawkeye', x: 850, y: 750, sprite: 'guest_anim_5', scale: 1.2, depth: 900 },
+    { agentId: 'thor', x: 1350, y: 750, sprite: 'guest_anim_6', scale: 1.2, depth: 900 },
+    { agentId: 'hulk', x: 350, y: 1150, sprite: 'star_idle', scale: 1.3, depth: 900 },
+    { agentId: 'captain', x: 850, y: 1150, sprite: 'star_idle', scale: 1.3, depth: 900 },
+    { agentId: 'norva', x: 1350, y: 1150, sprite: 'star_researching', scale: 1.3, depth: 900 }
   ],
 
   // === 总资源数量（用于加载进度条） ===

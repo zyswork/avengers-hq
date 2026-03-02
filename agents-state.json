@@ -1,4 +1,5 @@
 [
+  {"agentId":"spiderman","name":"SpiderMan","emoji":"🕷","state":"idle","detail":"总指挥待命"},
   {"agentId":"jarvis","name":"Jarvis","emoji":"🤖","state":"idle","detail":"管家待命"},
   {"agentId":"ironman","name":"IronMan","emoji":"🛠","state":"writing","detail":"写代码"},
   {"agentId":"blackwidow","name":"BlackWidow","emoji":"🕷","state":"executing","detail":"执行任务"},

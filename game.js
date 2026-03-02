@@ -223,19 +223,19 @@ const NAME_TAG_COLORS = {
 // breakroom / writing / error 区域的 agent 分布位置（多 agent 时错开）
 const AREA_POSITIONS = {
   breakroom: [
-    { x: 620, y: 180 },
-    { x: 560, y: 220 },
-    { x: 680, y: 210 }
+    { x: 1300, y: 400 },
+    { x: 1200, y: 460 },
+    { x: 1450, y: 440 }
   ],
   writing: [
-    { x: 760, y: 320 },
-    { x: 830, y: 280 },
-    { x: 690, y: 350 }
+    { x: 1600, y: 680 },
+    { x: 1750, y: 600 },
+    { x: 1450, y: 740 }
   ],
   error: [
-    { x: 180, y: 260 },
-    { x: 120, y: 220 },
-    { x: 240, y: 230 }
+    { x: 380, y: 560 },
+    { x: 280, y: 480 },
+    { x: 500, y: 500 }
   ]
 };
 
@@ -285,7 +285,7 @@ function preload() {
     hideLoadingOverlay();
   });
 
-  this.load.image('office_bg', '/static/office_bg_small' + (supportsWebP ? '.webp' : '.png') + '?v={{VERSION_TIMESTAMP}}');
+  this.load.image('office_bg', '/static/office_bg' + (supportsWebP ? '.webp' : '.png') + '?v={{VERSION_TIMESTAMP}}');
   this.load.spritesheet('star_idle', '/static/star-idle-spritesheet' + getExt('star-idle-spritesheet.png'), { frameWidth: 128, frameHeight: 128 });
   this.load.spritesheet('star_researching', '/static/star-researching-spritesheet' + getExt('star-researching-spritesheet.png'), { frameWidth: 128, frameHeight: 105 });
 
@@ -311,7 +311,8 @@ function preload() {
 
 function create() {
   game = this;
-  this.add.image(640, 360, 'office_bg');
+  // 背景图放在画布中心（原图就是 2752x1536，不需要缩放）
+  this.add.image(1376, 768, 'office_bg');
 
   // === 沙发（来自 LAYOUT）===
   sofa = this.add.sprite(
@@ -363,14 +364,14 @@ function create() {
   plaqueBg.setStrokeStyle(3, 0x3e2723);
   const plaqueText = game.add.text(plaqueX, plaqueY, '海辛小龙虾的办公室', {
     fontFamily: 'ArkPixel, monospace',
-    fontSize: '18px',
+    fontSize: '28px',
     fill: '#ffd700',
     fontWeight: 'bold',
     stroke: '#000',
-    strokeThickness: 2
+    strokeThickness: 3
   }).setOrigin(0.5);
-  game.add.text(plaqueX - 190, plaqueY, '⭐', { fontFamily: 'ArkPixel, monospace', fontSize: '20px' }).setOrigin(0.5);
-  game.add.text(plaqueX + 190, plaqueY, '⭐', { fontFamily: 'ArkPixel, monospace', fontSize: '20px' }).setOrigin(0.5);
+  game.add.text(plaqueX - 260, plaqueY, '⭐', { fontFamily: 'ArkPixel, monospace', fontSize: '28px' }).setOrigin(0.5);
+  game.add.text(plaqueX + 260, plaqueY, '⭐', { fontFamily: 'ArkPixel, monospace', fontSize: '28px' }).setOrigin(0.5);
 
   // === 植物们（来自 LAYOUT）===
   const plantFrameCount = 16;
