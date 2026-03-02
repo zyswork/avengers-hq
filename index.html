@@ -522,26 +522,32 @@
                 let sprite;
 
                 if (game.textures.exists(spriteKey)) {
-                    // 使用 spritesheet 或 image
-                    const frameCount = game.textures.get(spriteKey).frameNames.length;
-                    if (frameCount > 1) {
-                        sprite = game.add.sprite(agent.x, agent.y, spriteKey, 0)
-                            .setOrigin(0.5, 1)
-                            .setScale(agent.scale || 1.0)
-                            .setDepth(agent.depth || 900);
-                    } else {
-                        sprite = game.add.image(agent.x, agent.y, spriteKey)
-                            .setOrigin(0.5, 1)
-                            .setScale(agent.scale || 1.0)
-                            .setDepth(agent.depth || 900);
-                    }
+                    // 始终用 sprite（spritesheet 和 image 都兼容）
+                    sprite = game.add.sprite(agent.x, agent.y, spriteKey, 0)
+                        .setOrigin(0.5, 1)
+                        .setScale(agent.scale || 1.0)
+                        .setDepth(agent.depth || 900);
+                    // 尝试播放动画
+                    try {
+                        const animKey = spriteKey + '_anim';
+                        if (!game.anims.exists(animKey)) {
+                            const frames = game.anims.generateFrameNumbers(spriteKey, {});
+                            if (frames.length > 1) {
+                                game.anims.create({ key: animKey, frames: frames, frameRate: 8, repeat: -1 });
+                            }
+                        }
+                        if (game.anims.exists(animKey)) {
+                            sprite.anims.play(animKey, true);
+                        }
+                    } catch(e) { /* 静态图没有动画，忽略 */ }
                 } else {
-                    // 兜底：使用文字
-                    sprite = game.add.text(agent.x, agent.y, '⭐', {
+                    // 兜底：使用大 emoji
+                    sprite = game.add.text(agent.x, agent.y, '🤖', {
                         fontFamily: 'ArkPixel, monospace',
-                        fontSize: '30px'
+                        fontSize: '64px'
                     }).setOrigin(0.5, 1);
                     sprite.setDepth(agent.depth || 900);
+                    console.warn('Texture not found:', spriteKey);
                 }
 
                 // 名字标签 (带 emoji, 22px)

@@ -32,21 +32,21 @@ const LAYOUT = {
   plaque: { x: 1376, y: 1500, width: 520, height: 50 },
   forcePng: { desk_v2: true },
 
-  // 9 个工位 — 每个 agent 对齐到背景图中对应桌子的椅子前方
-  // scale 放大到 2.0 让人物清晰可见
+  // guest_anim = 32x32 帧 → scale 4.0 显示为 128px
+  // star_idle/star_researching = 128x128 帧 → scale 1.2 显示为 ~154px
   agentDesks: [
-    // === Row 1 (y ≈ 500) ===
-    { agentId: 'spiderman',  x: 504,  y: 520,  sprite: 'star_idle',         scale: 2.2, depth: 910 },
-    { agentId: 'jarvis',     x: 994,  y: 490,  sprite: 'guest_anim_1',      scale: 2.0, depth: 910 },
-    { agentId: 'ironman',    x: 1573, y: 520,  sprite: 'guest_anim_2',      scale: 2.0, depth: 910 },
-    // === Row 2 (y ≈ 940) ===
-    { agentId: 'blackwidow', x: 504,  y: 950,  sprite: 'guest_anim_3',      scale: 2.0, depth: 910 },
-    { agentId: 'hawkeye',    x: 1007, y: 950,  sprite: 'guest_anim_4',      scale: 2.0, depth: 910 },
-    { agentId: 'thor',       x: 1587, y: 900,  sprite: 'guest_anim_5',      scale: 2.0, depth: 910 },
-    // === Row 3 (y ≈ 1370) ===
-    { agentId: 'hulk',       x: 511,  y: 1380, sprite: 'guest_anim_6',      scale: 2.0, depth: 910 },
-    { agentId: 'captain',    x: 994,  y: 1380, sprite: 'star_researching',   scale: 2.0, depth: 910 },
-    { agentId: 'norva',      x: 1573, y: 1380, sprite: 'guest_anim_1',      scale: 2.0, depth: 910 }
+    // Row 1 — 对齐第一排桌椅
+    { agentId: 'spiderman',  x: 504,  y: 520,  sprite: 'star_idle',         scale: 1.2, depth: 910 },
+    { agentId: 'jarvis',     x: 994,  y: 490,  sprite: 'star_idle',         scale: 1.2, depth: 910 },
+    { agentId: 'ironman',    x: 1573, y: 520,  sprite: 'guest_anim_2',      scale: 4.0, depth: 910 },
+    // Row 2 — 对齐第二排桌椅
+    { agentId: 'blackwidow', x: 504,  y: 950,  sprite: 'guest_anim_3',      scale: 4.0, depth: 910 },
+    { agentId: 'hawkeye',    x: 1007, y: 950,  sprite: 'guest_anim_4',      scale: 4.0, depth: 910 },
+    { agentId: 'thor',       x: 1587, y: 900,  sprite: 'guest_anim_5',      scale: 4.0, depth: 910 },
+    // Row 3 — 对齐第三排桌椅
+    { agentId: 'hulk',       x: 511,  y: 1380, sprite: 'guest_anim_6',      scale: 4.0, depth: 910 },
+    { agentId: 'captain',    x: 994,  y: 1380, sprite: 'star_researching',   scale: 1.2, depth: 910 },
+    { agentId: 'norva',      x: 1573, y: 1380, sprite: 'guest_anim_1',      scale: 4.0, depth: 910 }
   ],
 
   totalAssets: 15
